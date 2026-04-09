@@ -1,8 +1,8 @@
-# FlowCore
+# flowcore-async-orchestrator
 
 ![FlowCore Dashboard](./docs/dashboard.png)
 
-FlowCore is a small async-first DAG task engine for Python with local and Redis-backed distributed execution.
+`FlowCore` is the Python package inside the `flowcore-async-orchestrator` repository. It is a small async-first DAG task engine for Python with local and Redis-backed distributed execution.
 
 - Async task definitions, dependency-aware DAG execution, and a clean Python API.
 - Practical distributed execution with retries, DLQ handling, idempotency, locks, and worker processes.
