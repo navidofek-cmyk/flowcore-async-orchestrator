@@ -1,0 +1,17 @@
+services:
+  flowcore-fastapi-demo:
+    build:
+      context: ..
+      dockerfile: demo_fastapi/Dockerfile
+    ports:
+      - "9101:9101"
+    environment:
+      FLOWCORE_DEMO_REDIS_URL: redis://flowcore-demo-redis:6379/0
+      FLOWCORE_DEMO_QUEUE: flowcore
+    networks:
+      - default
+      - flowcore-demo-net
+
+networks:
+  flowcore-demo-net:
+    external: true

@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flowcore"
+version = "0.1.0"
+description = "Async-first DAG task engine for Python."
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [
+  { name = "FlowCore" }
+]
+dependencies = [
+  "prometheus-client>=0.20,<1.0",
+  "redis>=5.0,<6.0",
+  "structlog>=24.0,<26.0",
+  "typer>=0.12,<1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "mypy>=1.10,<2.0",
+  "pytest>=8.0,<9.0",
+  "pytest-asyncio>=0.23,<1.0",
+  "ruff>=0.5,<1.0",
+  "testcontainers>=4.8,<5.0",
+]
+
+[project.scripts]
+flowcore = "flowcore.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["flowcore*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = [
+  "integration: tests that require external services via testcontainers",
+]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+packages = ["flowcore"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["UP046", "UP047"]
